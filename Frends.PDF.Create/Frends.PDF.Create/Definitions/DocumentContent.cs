@@ -8,8 +8,9 @@ namespace Frends.PDF.Create.Definitions
     public class DocumentContent
     {
         /// <summary>
-        /// Document content
+        /// Document content.
         /// </summary>
+        /// <example>Array of PageContentElements</example>
         [DisplayName("Document Content")]
         public PageContentElement[] Contents { get; set; }
     }

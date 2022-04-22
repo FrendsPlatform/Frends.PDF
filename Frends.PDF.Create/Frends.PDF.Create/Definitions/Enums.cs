@@ -1,4 +1,4 @@
-﻿#pragma warning disable CS1591
+﻿#pragma warning disable CS1591 // Some of the enums are self-explanatory.
 
 namespace Frends.PDF.Create.Definitions
 {

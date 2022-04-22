@@ -1,6 +1,4 @@
-﻿#pragma warning disable CS1591
-
-namespace Frends.PDF.Create.Definitions
+﻿namespace Frends.PDF.Create.Definitions
 {
     /// <summary>
     /// Result-class for the task.
@@ -17,7 +15,7 @@ namespace Frends.PDF.Create.Definitions
         /// </summary>
         public string FileName { get; private set; }
 
-        public Result(bool success, string fileName)
+        internal Result(bool success, string fileName)
         {
             Success = success;
             FileName = fileName;

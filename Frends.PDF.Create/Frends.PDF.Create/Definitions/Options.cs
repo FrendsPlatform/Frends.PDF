@@ -11,6 +11,7 @@ namespace Frends.PDF.Create.Definitions
         /// True: Throws error on failure
         /// False: Returns object{ Success = false }
         /// </summary>
+        /// <example>true</example>
         [DefaultValue(true)]
         public bool ThrowErrorOnFailure { get; set; } = true;
     }
