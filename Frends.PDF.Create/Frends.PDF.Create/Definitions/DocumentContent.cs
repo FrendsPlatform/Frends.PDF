@@ -1,17 +1,16 @@
 ﻿using System.ComponentModel;
 
-namespace Frends.PDF.Create.Definitions
+namespace Frends.PDF.Create.Definitions;
+
+/// <summary>
+/// Class for wrapping page contents together.
+/// </summary>
+public class DocumentContent
 {
     /// <summary>
-    /// Class for wrapping page contents together.
+    /// Document content.
     /// </summary>
-    public class DocumentContent
-    {
-        /// <summary>
-        /// Document content.
-        /// </summary>
-        /// <example>Array of PageContentElements</example>
-        [DisplayName("Document Content")]
-        public PageContentElement[] Contents { get; set; }
-    }
+    /// <example>Array of PageContentElements</example>
+    [DisplayName("Document Content")]
+    public PageContentElement[] Contents { get; set; }
 }
