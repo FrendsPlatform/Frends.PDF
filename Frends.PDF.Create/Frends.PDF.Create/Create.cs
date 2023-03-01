@@ -224,9 +224,9 @@ public class PDF
 
         Table table;
 
-        if (isHeader) 
+        if (isHeader)
             table = section.Headers.Primary.AddTable();
-        else 
+        else
             table = section.Footers.Primary.AddTable();
 
         Row row;
