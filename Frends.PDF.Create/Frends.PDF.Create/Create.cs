@@ -6,6 +6,7 @@ using MigraDoc.Rendering;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
@@ -47,7 +48,7 @@ public class PDF
             AddContent(document, documentSettings, content);
 
             var fileName = DetermineFileName(outputFile);
-            
+
             // Save document.
             var pdfRenderer = new PdfDocumentRenderer(outputFile.Unicode)
             {
@@ -164,7 +165,10 @@ public class PDF
 
     private static void AddImage(Section section, PageContentElement pageContent, Unit pageWidth)
     {
-        Unit originalImageWidthInches = null;
+        if (!File.Exists(pageContent.ImagePath))
+            throw new FileNotFoundException("Image not found from path: " + pageContent.ImagePath);
+
+        Unit originalImageWidthInches;
 
         // Workaround to get image dimensions.
         // Namespace has to be introduced due to conflict with MigraDoc.DocumentObjectModel.Shapes.Image.
@@ -174,9 +178,6 @@ public class PDF
             var imageInches = userImage.Width / userImage.VerticalResolution;
             originalImageWidthInches = new Unit(imageInches, UnitType.Inch);
         }
-
-        if (!File.Exists(pageContent.ImagePath))
-            throw new FileNotFoundException("Image not found from path: " + pageContent.ImagePath);
 
         // Add image.
         var image = section.AddImage(pageContent.ImagePath);
@@ -223,8 +224,10 @@ public class PDF
 
         Table table;
 
-        if (isHeader) table = section.Headers.Primary.AddTable();
-        else table = section.Footers.Primary.AddTable();
+        if (isHeader) 
+            table = section.Headers.Primary.AddTable();
+        else 
+            table = section.Footers.Primary.AddTable();
 
         Row row;
         Paragraph textField;
