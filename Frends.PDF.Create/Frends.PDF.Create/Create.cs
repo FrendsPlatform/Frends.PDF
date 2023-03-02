@@ -6,7 +6,6 @@ using MigraDoc.Rendering;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
